@@ -1,6 +1,6 @@
 import pygame
 
-from Object import *
+from Object3D import *
 from MeshCube import *
 from Transform import *
 from pygame.locals import *
