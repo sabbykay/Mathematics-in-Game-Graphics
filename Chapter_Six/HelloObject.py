@@ -25,7 +25,7 @@ glEnable(GL_DEPTH_TEST)
 objects = []
 cube = Object("Cube")
 cube.add_component(Transform((0, 0, -1)))
-cube.add_component(Cube(GL_POLYGON, "pexels-george-chambers-16317911.jpg"))
+cube.add_component(Cube(GL_POLYGON, "../pexels-george-chambers-16317911.jpg"))
 objects.append(cube)
 glEnable(GL_LIGHTING)
 glLight(GL_LIGHT0, GL_POSITION, (5, 5, 5, 1))
