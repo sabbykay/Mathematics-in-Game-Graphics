@@ -1,10 +1,13 @@
-from MeshCube import *
-from Object3D import *
+import pygame
+from Object3D import Object
+from MeshCube import Cube
 from Settings import *
 import math
 from pygame.locals import *
 from OpenGL.GL import *
 from OpenGL.GLU import *
+from Button import Button
+from Transform import Transform
 
 pygame.init()
 screen_width = math.fabs(window_dimensions[1] - window_dimensions[0])
@@ -22,8 +25,8 @@ objects_2d = []
 
 cube = Object("Cube")
 cube.add_component(Transform((0, 0, -5)))
-cube.add_component(Cube(GL_POLYGON, "../images/wall.tif"))
 
+cube.add_component(Cube(GL_POLYGON, "Images/pexels-george-chambers-16317911.jpg"))
 
 objects_3d.append(cube)
 
@@ -42,6 +45,7 @@ objects_2d.append(button1)
 clock = pygame.time.Clock()
 fps = 30
 
+
 def set_2d():
     glMatrixMode(GL_PROJECTION)
     glLoadIdentity()  # reset projection matrix
@@ -52,12 +56,14 @@ def set_2d():
     glLoadIdentity()  # reset modelview matrix
     glViewport(0, 0, screen.get_width(), screen.get_height())
 
+
 def set_3d():
     glMatrixMode(GL_PROJECTION)
     glLoadIdentity()
     gluPerspective(60, (screen_width / screen_height),
 
                    0.1, 100.0)
+
     glMatrixMode(GL_MODELVIEW)
     glLoadIdentity()
     glViewport(0, 0, screen.get_width(), screen.get_height())
@@ -80,6 +86,7 @@ while not done:
         trans.move_y(0.1)
     if keys[pygame.K_DOWN]:
         trans.move_y(-0.1)
+
     glPushMatrix()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 

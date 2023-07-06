@@ -15,6 +15,6 @@ class Transform:
 
     def move_y(self, amount):
         self.position = pygame.math.Vector3(self.position.x, self.position.y + amount, self.position.z)
-
+    
     def move(self, amount: pygame.math.Vector3):
         self.position = pygame.math.Vector3(self.position.x + amount.x, self.position.y + amount.y, self.position.z + amount.z)

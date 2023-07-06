@@ -23,7 +23,7 @@ objects_2d = []
 
 cube = Object("Cube")
 cube.add_component(Transform((0, 0, -5)))
-cube.add_component(Cube(GL_POLYGON, "../images/crate.png"))
+cube.add_component(Cube(GL_POLYGON, "Images/pexels-george-chambers-16317911.jpg"))
 
 objects_3d.append(cube)
 

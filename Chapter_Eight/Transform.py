@@ -1,6 +1,5 @@
 import pygame
 
-
 class Transform:
     def __init__(self, position):
         self.set_position(position)

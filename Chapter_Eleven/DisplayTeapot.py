@@ -1,8 +1,8 @@
-from Button import *
-from MeshCube import *
+from Button import Button
+from MeshCube import Cube
 from LoadMesh import *
 from Object3D import *
-from Settings import *
+from Settings import window_dimensions, gui_dimensions
 import math
 from pygame.locals import *
 from OpenGL.GL import *
@@ -13,7 +13,8 @@ screen_width = math.fabs(window_dimensions[1] - window_dimensions[0])
 screen_height = math.fabs(window_dimensions[3] - window_dimensions[2])
 
 pygame.display.set_caption('OpenGL in Python')
-screen = pygame.display.set_mode((screen_width, screen_height), DOUBLEBUF | OPENGL)
+screen = pygame.display.set_mode((screen_width, screen_height),
+                                 DOUBLEBUF | OPENGL)
 
 done = False
 white = pygame.Color(255, 255, 255)
@@ -23,8 +24,8 @@ objects_2d = []
 
 cube = Object("Cube")
 cube.add_component(Transform((0, 0, -5)))
-cube.add_component(LoadMesh(GL_LINE_LOOP, "Chapter_Eight/models/teapot.obj"))
-#cube.add_component(Cube(GL_POLYGON, "../images/crate.png"))
+cube.add_component(LoadMesh(GL_LINE_LOOP, "Models/teapot.obj"))
+#cube.add_component(Cube(GL_POLYGON, "Images/pexels-george-chambers-16317911.jpg"))
 
 objects_3d.append(cube)
 
@@ -58,7 +59,9 @@ def set_2d():
 def set_3d():
     glMatrixMode(GL_PROJECTION)
     glLoadIdentity()
-    gluPerspective(60, (screen_width / screen_height), 0.1, 100.0)
+    gluPerspective(60, (screen_width / screen_height),
+
+                   0.1, 100.0)
 
     glMatrixMode(GL_MODELVIEW)
     glLoadIdentity()

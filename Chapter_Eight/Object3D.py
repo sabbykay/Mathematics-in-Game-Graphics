@@ -1,6 +1,8 @@
-from Mesh3D import *
-from Transform import *
-from Button import *
+from Mesh3D import Mesh3D
+from Transform import Transform
+from Button import Button
+from OpenGL.GL import *
+from OpenGL.GLU import *
 
 class Object:
     def __init__(self, obj_name):

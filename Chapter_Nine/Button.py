@@ -1,3 +1,4 @@
+# import math
 import pygame.mouse
 from OpenGL.GL import *
 from Utils import *
@@ -25,6 +26,7 @@ class Button:
         my = map_value(window_dimensions[2], window_dimensions[3],
                        gui_dimensions[2], gui_dimensions[3],
                        mouse_pos[1])
+
         glPushMatrix()
         glLoadIdentity()
         # If the mouse is over the button
@@ -47,4 +49,3 @@ class Button:
         glVertex2f(self.position[0] + self.width, self.position[1] + self.height)
         glVertex2f(self.position[0], self.position[1] + self.height)
         glEnd()
-        glPopMatrix()

@@ -1,8 +1,6 @@
-import pygame
-from Button import *
 from MeshCube import *
-from Display_Normals import *
 from Grid import *
+from DisplayNormals import *
 from Object3D import *
 from Settings import *
 import math
@@ -14,7 +12,7 @@ pygame.init()
 screen_width = math.fabs(window_dimensions[1] - window_dimensions[0])
 screen_height = math.fabs(window_dimensions[3] - window_dimensions[2])
 
-pygame.display.set_caption('Vectors')
+pygame.display.set_caption('OpenGL in Python')
 screen = pygame.display.set_mode((screen_width, screen_height),
                                  DOUBLEBUF | OPENGL)
 
@@ -26,15 +24,14 @@ objects_2d = []
 
 cube = Object("Cube")
 cube.add_component(Transform((0, 0, -5)))
-cube.add_component(Cube(GL_POLYGON, "../images/crate.png"))
+cube.add_component(Cube(GL_POLYGON, "Images/pexels-george-chambers-16317911.jpg"))
 cube.add_component(DisplayNormals(cube.get_component(Cube).vertices,
-                                  cube.get_component(Cube).triangles))
+                                   cube.get_component(Cube).triangles))
+objects_3d.append(cube)
 
 cube2 = Object("Cube")
 cube2.add_component(Transform((0, 1, -5)))
-cube2.add_component(Cube(GL_POLYGON, "../images/brick.jpg"))
-
-objects_3d.append(cube)
+cube2.add_component(Cube(GL_POLYGON, "Images/pexels-george-chambers-16317911.jpg"))
 objects_3d.append(cube2)
 
 grid = Object("Grid")
@@ -77,14 +74,14 @@ def set_3d():
     glEnable(GL_DEPTH_TEST)
 
 trans: Transform = cube.get_component(Transform)
-start_position = pygame.Vector3(-4, 0, -5)
+start_position = pygame.Vector3(-3, 0, -5)
 end_position = pygame.Vector3(0, 0, -5)
 v = end_position - start_position
 t = 0
 trans.set_position(start_position)
 dt = 0
 
-trans2: Transform = cube2.get_component((Transform))
+trans2: Transform = cube2.get_component(Transform)
 
 while not done:
     events = pygame.event.get()

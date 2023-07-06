@@ -49,4 +49,3 @@ class Button:
         glVertex2f(self.position[0] + self.width, self.position[1] + self.height)
         glVertex2f(self.position[0], self.position[1] + self.height)
         glEnd()
-        glPopMatrix()

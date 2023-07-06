@@ -2,13 +2,13 @@ from Mesh3D import *
 from Transform import *
 from Button import *
 from Grid import *
-from Display_Normals import *
+from DisplayNormals import *
 
 class Object:
     def __init__(self, obj_name):
         self.name = obj_name
         self.components = []
-            
+
     def add_component(self, component):
         if isinstance(component, Transform):
             self.components.insert(0, self.components)
@@ -20,13 +20,14 @@ class Object:
             if isinstance(c, Transform):
                 pos = c.get_position()
                 glTranslatef(pos.x, pos.y, pos.z)
-            elif isinstance(c, Mesh3D):
+            if isinstance(c, Mesh3D):
                 c.draw()
-            elif isinstance(c, Grid):
+            if isinstance(c, Grid):
                 c.draw()
-            elif isinstance(c,DisplayNormals):
+            if isinstance(c, DisplayNormals):
                 c.draw()
-    
+            if isinstance(c, Button):
+                c.draw(events)
         glPopMatrix()
 
     def get_component(self, class_type):

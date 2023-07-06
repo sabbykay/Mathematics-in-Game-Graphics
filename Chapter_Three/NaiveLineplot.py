@@ -1,29 +1,43 @@
 import pygame
-pygame.init()
-screen_width = 1000
-screen_height = 800
-screen = pygame.display.set_mode((screen_width,screen_height))
+from pygame.locals import *
 
+pygame.init()
+
+screen_width = 1000
+screen_heigth = 800
+screen = pygame.display.set_mode((screen_width, screen_heigth))
 done = False
+
 white = pygame.Color(255, 255, 255)
 green = pygame.Color(0, 255, 0)
-xoriginoffset = int(screen.get_width() / 2)
-yoriginoffset = int(screen.get_height() / 2)
+timesClicked = 0
+
+def plot_line(point1, point2):
+    if point2[0] < point1[0]:
+        temp = point2
+        point2 = point1
+        point1 = temp
+    x0, y0 = point1
+    x1, y1 = point2
+    m = (y1 - y0)/(x1 - x0)
+    c = y0 - (m * x0)
+    for x in range(x0, x1):
+        y = m * x + c # LINE EQUATION
+        screen.set_at((int(x), int(y)), white)
+
 while not done:
-    for event in pygame.event.get() :
+    for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
-        # x axis
-        for x in range(-500, 500):
-            screen.set_at((x + xoriginoffset, yoriginoffset),
-                           green)
-        # y axis
-        for y in range(-400, 400):
-            screen.set_at((xoriginoffset, y + yoriginoffset),
-                           green)
-        for x in range(-500, 500):
-            y = (10 * x) - 100 #LINE EQUATION
-            screen.set_at((x + xoriginoffset, y + 
-                           yoriginoffset), white)    
+        elif event.type == MOUSEBUTTONDOWN:
+            if timesClicked == 0:
+                point1 = pygame.mouse.get_pos()
+            else:
+                point2 = pygame.mouse.get_pos()
+            timesClicked += 1
+            if timesClicked > 1:
+                plot_line(point1, point2)
+                timesClicked = 0
+
     pygame.display.update()
 pygame.quit()

@@ -1,13 +1,12 @@
 from OpenGL.GL import *
 
 class Grid():
-    def __init__(self, interval, halfsize, color):
+    def __init__(self, interval, halfsize, colour):
         self.interval = interval
         self.halfsize = halfsize
-        self.color = color
-
+        self.colour = colour
     def draw(self):
-        glColor3fv(self.color)
+        glColor3fv(self.colour)
         glBegin(GL_LINES)
         for x in range(-self.halfsize, self.halfsize):
             for y in range(-self.halfsize, self.halfsize):

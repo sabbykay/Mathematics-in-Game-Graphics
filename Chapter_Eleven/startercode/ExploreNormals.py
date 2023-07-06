@@ -1,7 +1,7 @@
 import math
 
 from Object3D import *
-from Display_Normals import *
+from DisplayNormals import *
 from pygame.locals import *
 from OpenGL.GLU import *
 from LoadMesh import *

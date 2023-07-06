@@ -1,9 +1,9 @@
-from MeshCube import *
+import pygame
+from Button import Button
+from LoadMesh import LoadMesh
 from Object3D import *
-from Settings import *
+from Settings import window_dimensions, gui_dimensions
 import math
-import pygame.mouse
-from LoadMesh import *
 from pygame.locals import *
 from OpenGL.GL import *
 from OpenGL.GLU import *
@@ -21,10 +21,11 @@ white = pygame.Color(255, 255, 255)
 
 objects_3d = []
 objects_2d = []
+
 cube = Object("Cube")
 cube.add_component(Transform((0, 0, -5)))
-cube.add_component(LoadMesh(GL_LINE_LOOP, "Chapter_Eight/models/teapot.obj"))
-
+cube.add_component(LoadMesh(GL_LINE_LOOP, "Models/teapot.obj"))
+#cube.add_component(Cube(GL_POLYGON, "Images/pexels-george-chambers-16317911.jpg"))
 
 objects_3d.append(cube)
 
@@ -43,6 +44,7 @@ objects_2d.append(button1)
 clock = pygame.time.Clock()
 fps = 30
 
+
 def set_2d():
     glMatrixMode(GL_PROJECTION)
     glLoadIdentity()  # reset projection matrix
@@ -56,9 +58,8 @@ def set_2d():
 def set_3d():
     glMatrixMode(GL_PROJECTION)
     glLoadIdentity()
-    gluPerspective(60, (screen_width / screen_height),
+    gluPerspective(60, (screen_width / screen_height), 0.1, 100.0)
 
-                   0.1, 100.0)
     glMatrixMode(GL_MODELVIEW)
     glLoadIdentity()
     glViewport(0, 0, screen.get_width(), screen.get_height())
@@ -95,5 +96,5 @@ while not done:
     glPopMatrix()
     pygame.display.flip()
     clock.tick(fps)
-    print(pygame.mouse.get_pos())
+    #print(pygame.mouse.get_pos())
 pygame.quit()

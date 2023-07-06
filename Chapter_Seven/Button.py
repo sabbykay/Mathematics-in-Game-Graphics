@@ -1,8 +1,8 @@
 import pygame.mouse
 from OpenGL.GL import *
-from Utils import *
+from Utils import map_value
 from pygame.locals import *
-from Settings import *
+from Settings import window_dimensions, gui_dimensions
 
 class Button:
     def __init__(self, screen, position, width, height, color, o_color, p_color, on_click):
@@ -15,16 +15,14 @@ class Button:
         self.pressed_color = p_color
         self.on_click = on_click
         self.mouse_down = False
-
-
+    
     def draw(self, events):
         mouse_pos = pygame.mouse.get_pos()
         mx = map_value(window_dimensions[0], window_dimensions[1],
-                       gui_dimensions[0], gui_dimensions[1],
-                       mouse_pos[0])
+                       gui_dimensions[0], gui_dimensions[1], mouse_pos[0])
         my = map_value(window_dimensions[2], window_dimensions[3],
-                       gui_dimensions[2], gui_dimensions[3],
-                       mouse_pos[1])
+                       gui_dimensions[2], gui_dimensions[3], mouse_pos[1])
+
         glPushMatrix()
         glLoadIdentity()
         # If the mouse is over the button

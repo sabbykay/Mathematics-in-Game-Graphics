@@ -11,7 +11,7 @@ while not done:
         for y in range(800) :
             for x in range(1000) :
                 screen.set_at((x, y),
-                    pygame.Color(0, int(x/1000 * 255) ,
-                        int(y/800 * 255)))
+                    pygame.Color(0, int(x / screen_width * 255),
+                        int(y / screen_height * 255)))
     pygame.display.update()
 pygame.quit()

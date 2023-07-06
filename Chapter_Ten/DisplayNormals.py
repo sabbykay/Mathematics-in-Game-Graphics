@@ -4,7 +4,6 @@ from MathOGL import *
 
 
 class DisplayNormals:
-
     def __init__(self, vertices, triangles):
         self.vertices = vertices
         self.triangles = triangles
@@ -20,10 +19,10 @@ class DisplayNormals:
                                vertex2[1] - vertex3[1],
                                vertex2[2] - vertex3[2])
             norm1 = cross_product(p, q)
-            #norm2 = cross_product(q, p)
+            norm2 = cross_product(q, p)
             nstart = (0, 0, 0)
             self.normals.append((nstart, nstart + norm1))
-            #self.normals.append((nstart, nstart + norm2))
+            self.normals.append((nstart, nstart + norm2))
 
     def draw(self):
         glColor3fv((0, 1, 0))

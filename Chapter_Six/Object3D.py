@@ -1,5 +1,7 @@
-from Mesh3D import *
-from Transform import *
+from Transform import Transform
+from Mesh3D import Mesh3D
+from OpenGL.GL import *
+from OpenGL.GLU import *
 
 class Object:
     def __init__(self, obj_name):
@@ -19,7 +21,6 @@ class Object:
                 glTranslatef(pos.x, pos.y, pos.z)
             if isinstance(c, Mesh3D):
                 c.draw()
-
         glPopMatrix()
 
     def get_component(self, class_type):
@@ -27,3 +28,4 @@ class Object:
             if type(c) is class_type:
                 return c
         return None
+    

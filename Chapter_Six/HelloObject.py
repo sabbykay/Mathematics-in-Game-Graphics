@@ -1,17 +1,15 @@
 import pygame
-
-from Object3D import *
-from MeshCube import *
-from Transform import *
+from Object3D import Object
+from MeshCube import Cube
+from Mesh3D import Mesh3D
+from Transform import Transform
 from pygame.locals import *
 from OpenGL.GL import *
 from OpenGL.GLU import *
 
 pygame.init()
-
 screen_width = 500
 screen_height = 500
-
 screen = pygame.display.set_mode((screen_width, screen_height), DOUBLEBUF | OPENGL)
 pygame.display.set_caption("OpenGL in Python")
 done = False
@@ -24,8 +22,8 @@ glTranslatef(0.0, 0.0, -3.0)
 glEnable(GL_DEPTH_TEST)
 objects = []
 cube = Object("Cube")
-cube.add_component(Transform((0, 0, -1)))
-cube.add_component(Cube(GL_POLYGON, "pexels-george-chambers-16317911.jpg"))
+cube.add_component(Transform((0, 0, 0)))
+cube.add_component(Cube(GL_POLYGON, "Images/pexels-george-chambers-16317911.jpg"))
 objects.append(cube)
 glEnable(GL_LIGHTING)
 glLight(GL_LIGHT0, GL_POSITION, (5, 5, 5, 1))

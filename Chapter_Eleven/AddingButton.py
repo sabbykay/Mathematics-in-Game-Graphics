@@ -1,6 +1,5 @@
 from Button import *
 from MeshCube import *
-from LoadMesh import *
 from Object3D import *
 from Settings import *
 import math
@@ -24,8 +23,7 @@ objects_2d = []
 
 cube = Object("Cube")
 cube.add_component(Transform((0, 0, -5)))
-cube.add_component(LoadMesh(GL_LINE_LOOP, "Chapter_Eight/models/teapot.obj"))
-#cube.add_component(Cube(GL_POLYGON, "../images/crate.png"))
+cube.add_component(Cube(GL_POLYGON, "Images/pexels-george-chambers-16317911.jpg"))
 
 objects_3d.append(cube)
 
@@ -100,5 +98,5 @@ while not done:
     glPopMatrix()
     pygame.display.flip()
     clock.tick(fps)
-    #print(pygame.mouse.get_pos())
+    print(pygame.mouse.get_pos())
 pygame.quit()

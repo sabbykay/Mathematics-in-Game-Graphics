@@ -8,16 +8,17 @@ from OpenGL.GLU import *
 
 pygame.init()
 
-screen_width = 500
-screen_height = 500
+screen_width = 1000
+screen_height = 1000
 
 screen = pygame.display.set_mode((screen_width, screen_height), DOUBLEBUF|OPENGL)
 pygame.display.set_caption('OpenGL in Python')
 done = False
 white = pygame.Color(255, 255, 255)
-gluPerspective(30, (screen_width // screen_height), 0.1, 100.0)
-# glOrtho(-1, 1, 1, -1, 0.1, 100.0)
-glTranslatef(0.0, 0.0, -3.0)
+gluPerspective(90, (screen_width / screen_height), 0.1, 100.0)
+vertical_fov = 80
+glOrtho(-1, 1, 1, -1, 0.1, 100.0)
+glTranslatef(0.0, 0.0, -3)
 mesh = Cube()
 
 while not done:
